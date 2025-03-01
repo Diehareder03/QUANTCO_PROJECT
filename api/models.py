@@ -11,15 +11,15 @@ class Venues(Base):
     latitude = Column(Float, nullable=False)
     longitude = Column(Float, nullable=False)
 
-    # ✅ Fixed Relationship to Weather
+    # Fixed Relationship to Weather
     weather_data = relationship("Weather", back_populates="venue")
 
-# ✅ Fixed Weather Table
+# Fixed Weather Table
 class Weather(Base):
     __tablename__ = "weather"
 
     id = Column(Integer, primary_key=True, index=True)
-    venues_id = Column(Integer, ForeignKey("venues.id"), nullable=False)  # ✅ Fixed ForeignKey
+    venues_id = Column(Integer, ForeignKey("venues.id"), nullable=False)  # Fixed ForeignKey
     timestamp = Column(DateTime, default=datetime.utcnow)
     temperature = Column(Float, nullable=True)
     humidity = Column(Float, nullable=True)
@@ -32,5 +32,5 @@ class Weather(Base):
     snowfall = Column(Float, nullable=True)
     snow_depth = Column(Float, nullable=True)
 
-    # ✅ Fixed Relationship (Was "venues", should be "Venues")
+    # Fixed Relationship (Was "venues", should be "Venues")
     venue = relationship("Venues", back_populates="weather_data")

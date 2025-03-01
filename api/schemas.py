@@ -2,7 +2,7 @@ from pydantic import BaseModel
 from datetime import datetime, date
 from typing import Optional
 
-# ✅ Venue Schema
+# Venue Schema
 class VenueBase(BaseModel):
     name: str
     latitude: float
@@ -17,7 +17,7 @@ class VenueResponse(VenueBase):
     class Config:
         from_attributes = True
 
-# ✅ Weather Schema
+# Weather Schema
 class WeatherBase(BaseModel):
     timestamp: datetime
     temperature: Optional[float] = None
@@ -41,7 +41,7 @@ class WeatherResponse(WeatherBase):
     class Config:
         from_attributes = True
 
-# ✅ Fixed Request Schema for Fetching Weather
+# Fixed Request Schema for Fetching Weather
 class WeatherRequest(BaseModel):
     venues_id: int
     start_date: date  # Changed to date since it's not a datetime

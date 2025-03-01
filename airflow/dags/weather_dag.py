@@ -4,7 +4,7 @@ import json
 from airflow import DAG
 from airflow.operators.python import PythonOperator
 
-# FastAPI endpoint URL (Ensure FastAPI is running)
+# FastAPI endpoint URL (Ensure FastAPI is running) 
 FASTAPI_HOST = "http://127.0.0.1:9000"  # Updated to match your FastAPI run command
 API_URL = f"{FASTAPI_HOST}/fetch-weather/"
 VENUES_API_URL = f"{FASTAPI_HOST}/api/venues/"
@@ -39,7 +39,7 @@ def fetch_and_store_weather():
         try:
             response = requests.post(API_URL, data=json.dumps(payload), headers=headers)
             response.raise_for_status()
-            print(f"✅ Weather data stored for venue: {venue['name']}")
+            print(f"Weather data stored for venue: {venue['name']}")
         except requests.RequestException as e:
             print(f" Failed to store weather data for venue {venue['name']}: {e}")
 
